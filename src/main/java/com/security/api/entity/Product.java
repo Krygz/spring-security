@@ -1,5 +1,4 @@
 package com.security.api.entity;
-
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -7,23 +6,24 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_users")
-public class User implements Serializable {
+@Table(name = "tb_products")
+public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String password;
+    private String name;
 
-    public User() {
+    private Double price;
+
+    public Product() {
     }
 
-    public User(Long id, String username, String password) {
+    public Product(Long id, String name, Double price) {
         this.id = id;
-        this.username = username;
-        this.password = password;
+        this.name = name;
+        this.price = price;
     }
 
     public Long getId() {
@@ -34,28 +34,28 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
     }
 
     @Override
